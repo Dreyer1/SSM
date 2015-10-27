@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.dreyer.ssm.controller.common.BaseController;
-import com.dreyer.ssm.dao.user.User;
-
 /** 
  * @Description 用户是否登陆拦截器
  * @author Dreyer 
@@ -25,17 +22,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		//如果是登陆的访问路径，则通过
-		String requestUrl = request.getRequestURI();
-		if (requestUrl.contains("login.do")) {
-			return true;
-		}
-		//判断会话中是否有登陆用户信息
-		User user = BaseController.getUserInfoFromSession(request);
-		if (user != null) {
-			return true;
-		}
-		return false;
+//		//如果是登陆的访问路径，则通过
+//		String requestUrl = request.getRequestURI();
+//		if (requestUrl.contains("login.do")) {
+//			return true;
+//		}
+//		//判断会话中是否有登陆用户信息
+//		User user = BaseController.getUserInfoFromSession();
+//		if (user != null) {
+//			return true;
+//		}
+		return true;
 	}
 
 	/**

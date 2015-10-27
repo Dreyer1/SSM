@@ -17,7 +17,7 @@ import com.dreyer.ssm.common.result.ApiResultGenerator;
 import com.dreyer.ssm.controller.common.BaseController;
 import com.dreyer.ssm.dao.user.User;
 import com.dreyer.ssm.exception.SystemException;
-import com.dreyer.ssm.service.IUserService;
+import com.dreyer.ssm.service.user.IUserService;
 import com.dreyer.ssm.utils.StringUtil;
 
 /**
@@ -38,7 +38,7 @@ public class UserController extends BaseController {
 	 * @param password
 	 * @return
 	 */
-	@RequestMapping("getUserInfo")
+	@RequestMapping("/getUserInfo")
 	@ResponseBody
 	public ApiResult getUserInfo(@RequestParam("phone") String phone,@RequestParam("password") String password) {
 		if (StringUtil.hasEmpty(phone,password)) {

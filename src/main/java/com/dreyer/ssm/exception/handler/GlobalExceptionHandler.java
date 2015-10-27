@@ -10,7 +10,7 @@ import com.dreyer.ssm.common.result.ApiResultGenerator;
 import com.dreyer.ssm.exception.SystemException;
 
 /**
- * @Description 系统全局异常的处理器（可以捕获Controller、Service、Dao层的异常）
+ * @Description 系统全局异常的处理器，可以根据不同的异常类型，定制处理异常的方式
  * @author Dreyer
  * @date 2015年9月1日 下午10:53:54
  * @version 1.0
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
 	 * @param exception
 	 * @return
 	 */
-	@ExceptionHandler
+	@ExceptionHandler({ RuntimeException.class})
 	@ResponseBody
 	public ApiResult runTimeExceptionHandelr(RuntimeException exception) {
 		logger.error("系统发生错误，错误信息：" + exception.getMessage());
@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
 	 * @param systemException
 	 * @return
 	 */
-	@ExceptionHandler
+	@ExceptionHandler({SystemException.class})
 	@ResponseBody
 	public ApiResult systemExceptionHandelr(SystemException systemException) {
 		logger.error("系统发生错误，错误代码："
